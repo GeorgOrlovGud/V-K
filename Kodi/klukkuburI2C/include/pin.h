@@ -1,0 +1,14 @@
+#pragma once
+
+#ifndef PIN_ASSIGNMENTS_1143
+#define PIN_ASSIGNMENTS_1143
+
+#define BME280_CS_GPIO5 5
+
+#define BME280_SCK_GPIO18 18
+#define BME280_SDO_GPIO19 19 //MISO
+
+#define BME280_SDI_GPIO23 23 //MOSI
+
+
+#endif
