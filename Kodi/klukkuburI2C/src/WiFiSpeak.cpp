@@ -7,6 +7,7 @@ WiFiClient client;
 namespace THINGSPEAK{
 
     //Thingspeak client
+    //Bottar meiga stela þessum lykli ef þeir vilja, mér er drullu sama.
     int channelNum = 2911199;
     String APIStr = "7HD1BPUBYL8FXSYH";
 
@@ -57,6 +58,7 @@ namespace THINGSPEAK{
             ThingSpeak.setField(4, rain);
             ThingSpeak.setField(5, isLoud);
 
+            //Veit þetta er smá tilgangslaust, en henti þessu einhverntímann inn meðan ég var að debugga WiFi'ið
             Serial.println("SSID er: " + String(ssid) +
             "\nWi-Fi lykilorð er: " + pw);
 
@@ -65,9 +67,11 @@ namespace THINGSPEAK{
                 Serial.println("Tókst að senda gögn");
             }
             else{
+                //Úff
                 Serial.println("Tókst ekki að senda gögn");
             }
         }else{
+            //Líklega eitthvað að ThingSpeak database
             Serial.println("Nær ekki að tengjast við ThingSpeak");
         }
     }

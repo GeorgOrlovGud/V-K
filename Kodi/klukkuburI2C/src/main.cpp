@@ -5,9 +5,12 @@
 #include "WiFiSpeak.h"
 #include "vedur.h"
 
+//Þetta er I2C tenging, ef þú fattaðir það ekki á nafninu á folderinum, farðu að sofa.
+//SPI tenging er of mikið vesen og breytir engu fyrir þetta verkefni.
 #define BME280_I2C_ADDRESS 0x76
 #define MIC_PIN 34              //Sleppi pin.h kjaftæðinu
-const int MIC_THRESHOLD = 1000; //Interstellar tónlist nálægt lol, breyta þessu frekar en að stilla potentiometerinn
+//Mældi með því að hafa Interstellar tónlist nálægt lol
+const int MIC_THRESHOLD = 700; //Beyta þessu frekar en að stilla potentiometerinn með skrúfjárni eins og fáviti
 
 Adafruit_BME280 bme;
 
@@ -18,6 +21,7 @@ void setup() {
   int setupTime = 45; //sekúndur
 
   //(GPIO21 = SDA, GPIO22 = SCL):
+
   Wire.begin();
 
   if (!bme.begin(BME280_I2C_ADDRESS)) {
@@ -34,6 +38,7 @@ void setup() {
 }
 
 void loop() {
+  //Ég nora þessar breytur oftar en einu sinni þanng skilgreini þær í stað þess að kalla alltaf á bme klass
   float temperature = bme.readTemperature();       // °C
   float humidity    = bme.readHumidity();          // %
   float pressure    = bme.readPressure() / 100.0F; // hPa
