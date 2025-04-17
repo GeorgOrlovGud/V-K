@@ -24,6 +24,7 @@ void setup(){
     THINGSPEAK::setup_ThingSpeak();
 }
 
+//Næstu tvö föll eru til svo ég geti kallað á þau ef, og einungis ef þess þarf
 void closeAct(){
     Serial.println("Lokar Glugga.");
     isClosed = true;
@@ -46,10 +47,11 @@ void loop(){
     //Á að loka?
     bool adLoka = (hiti < 18) || rign || hava;
 
-    //Kallar á föll sem loka og opna gluggan
+    //Kallar á föll sem loka og opna gluggan ef og einungis ef þess þarf
     if(adLoka && !isClosed){closeAct();}
     else if (!adLoka && isClosed){openAct();}
 
+    //Heldur glugganum lokuðum/opnuðum
     if (isClosed)
     {
         digitalWrite(ACTUATOR_PIN, HIGH);
